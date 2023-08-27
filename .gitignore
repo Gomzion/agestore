@@ -1,0 +1,20 @@
+.DS_Store
+
+source/application/cache/*
+!source/application/cache/index.html
+
+source/application/logs/*
+!source/application/logs/index.html
+
+!source/application/*/.htaccess
+
+source/composer.lock
+
+source/vendor/
+source/pb/
+source/pb2/
+
+# IDE Files
+#-------------------------
+source/.idea/*
+

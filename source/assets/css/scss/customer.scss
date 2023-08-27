@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.customer {
+  padding-bottom:0px;
+
+  .modify-btn {
+    display:inline-block;
+    padding:4px;
+    background: #fff;
+    border:1px solid $gray09;
+    border-radius:5px;
+    @include font($gray09, 12px, 18px);
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.customer-detail {
+  padding-bottom:0px;
+
+  .section-box {
+    padding-bottom:35px;
+    border-bottom:5px solid $gray01;
+
+    &.middle {
+      .paging {
+        margin-bottom:25px;
+      }
+    }
+
+    &:last-child {
+      padding-bottom:0px;
+      border-bottom:none;
+    }
+
+    .section-content {
+      margin-top:20px;
+
+      .row-info {
+        @include flex();
+        gap:0px 10px;
+        margin-top:20px;
+        @include font($gray09, 16px, 24px);
+  
+        > p {
+          font:inherit;
+          font-weight: 500;
+
+          &.big {
+            line-height: 40px;
+          }
+        }
+  
+        .business-box {
+          @include flex();
+          gap:0px 20px;
+          font:inherit;
+
+          .input-box, .file-box {
+            width:200px;
+          }
+        }
+      }
+    }
+  }
+}

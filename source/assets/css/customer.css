@@ -1,0 +1,63 @@
+/* flex */
+/* font */
+/* text cutting */
+.customer {
+  padding-bottom: 0px;
+}
+.customer .modify-btn {
+  display: inline-block;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #0A0A0A;
+  border-radius: 5px;
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.customer-detail {
+  padding-bottom: 0px;
+}
+.customer-detail .section-box {
+  padding-bottom: 35px;
+  border-bottom: 5px solid #F5F5F5;
+}
+.customer-detail .section-box.middle .paging {
+  margin-bottom: 25px;
+}
+.customer-detail .section-box:last-child {
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+.customer-detail .section-box .section-content {
+  margin-top: 20px;
+}
+.customer-detail .section-box .section-content .row-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 10px;
+  margin-top: 20px;
+  color: #0A0A0A;
+  font-size: 16px;
+  line-height: 24px;
+}
+.customer-detail .section-box .section-content .row-info > p {
+  font: inherit;
+  font-weight: 500;
+}
+.customer-detail .section-box .section-content .row-info > p.big {
+  line-height: 40px;
+}
+.customer-detail .section-box .section-content .row-info .business-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 20px;
+  font: inherit;
+}
+.customer-detail .section-box .section-content .row-info .business-box .input-box, .customer-detail .section-box .section-content .row-info .business-box .file-box {
+  width: 200px;
+}

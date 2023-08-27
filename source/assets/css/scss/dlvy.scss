@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.article {
+  .article-title {
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items:flex-start;
+
+    .period {
+      @include flex();
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+
+      li {
+        a {
+          display:inline-block;
+          padding:0px 10px;
+          background: #fff;
+          border:1px solid $gray03;
+          border-radius:5px;
+          @include font($gray09, 12px, 34px);
+
+          &.on {
+            background: $gray09;
+            border-color: $gray09;
+            color:#fff;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+@container (min-width: 768px) {
+
+.article {
+  .article-title {
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:center;
+
+    .period {
+      margin-top:0px;
+
+      li {
+        a {
+          font-size:14px;
+          line-height: 38px;
+        }
+      }
+    }
+  }
+}
+
+}

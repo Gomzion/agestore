@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.section-box {
+  padding-bottom:35px;
+  border-bottom:5px solid $gray01;
+
+  .section-title {
+    justify-content: space-between;
+
+    .right-group {
+      .radio-box {
+        min-height:auto;
+        padding:0px;
+      }
+    }
+  }
+
+  .section-content {
+    margin-top:20px;
+    min-height:450px;
+    
+    .ck-editor .ck-editor__main {
+      height:400px;
+      overflow:auto;
+      resize:vertical;
+    }
+  }
+}
+
+.btn-row-group {
+  width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}

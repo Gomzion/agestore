@@ -1,0 +1,47 @@
+/* flex */
+/* font */
+/* text cutting */
+.article .article-title {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.article .article-title .period {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.article .article-title .period li a {
+  display: inline-block;
+  padding: 0px 10px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 34px;
+}
+.article .article-title .period li a.on {
+  background: #0A0A0A;
+  border-color: #0A0A0A;
+  color: #fff;
+  font-weight: bold;
+}
+
+@container (min-width: 768px) {
+  .article .article-title {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .article .article-title .period {
+    margin-top: 0px;
+  }
+  .article .article-title .period li a {
+    font-size: 14px;
+    line-height: 38px;
+  }
+}

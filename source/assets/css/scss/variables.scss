@@ -1,0 +1,64 @@
+$blue:#104AE1;
+
+$sky01:#ECF1FE;
+
+$red01:#DB0025;
+$red02:#910012;
+
+$green:#008086;
+
+$gray01:#F5F5F5;
+$gray02:#EDEDED;
+$gray03:#E0E0E0;
+$gray04:#C2C2C2;
+$gray05:#9E9E9E;
+$gray06:#757575;
+$gray07:#616161;
+$gray08:#424242;
+$gray09:#0A0A0A;
+$gray-bg:#f6f6f6;
+
+$place-color:$gray06;
+
+$red-bg: linear-gradient(123.72deg, #DB0025 3.86%, #910012 74.25%);
+$red-bg-deep: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(123.72deg, #DB0025 3.86%, #910012 74.25%);
+
+/* flex */
+@mixin flex($justify:flex-start, $align:flex-start) {
+  display:flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin inline-flex($justify:flex-start, $align:flex-start) {
+  display:inline-flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/* font */
+@mixin font(
+  $color:#000,
+  $font-size:16px,
+  $line-height:$font-size*1.5
+) {
+  color:$color;
+  font-size:$font-size;
+  line-height:$line-height;
+}
+
+/* text cutting */
+@mixin text-cut($line:1, $line-height:0px) {
+  @if $line == 1 {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  } @else {
+    display: -webkit-box;
+    max-height:$line-height * $line;
+    overflow:hidden;
+    vertical-align:top;
+    text-overflow: ellipsis;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:$line
+  }
+}

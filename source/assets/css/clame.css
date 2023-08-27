@@ -1,0 +1,65 @@
+/* flex */
+/* font */
+/* text cutting */
+.section-content .order-product-list > ul {
+  border-bottom: none;
+}
+.section-content .state-box {
+  padding: 20px 0px;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.section-content .state-box .price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px 10px;
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+.section-content .state-box .price strong {
+  color: #DB0025;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+@container (min-width: 768px) {
+  .section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px 30px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+  .section-content .order-product-list {
+    width: calc(100% - 340px);
+    padding: 0px;
+  }
+  .section-content .state-box {
+    flex-shrink: 0;
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    flex-direction: column;
+    width: 320px;
+    margin: 20px 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid #E0E0E0;
+  }
+  .section-content .state-box .price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .section-content .state-box .price strong {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}

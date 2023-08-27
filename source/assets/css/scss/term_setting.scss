@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.section-wrapper {
+  @include flex();
+  gap:0px 20px;
+  padding:40px 0px 35px;
+  border-bottom:5px solid $gray01;
+
+  .section-aside {
+    flex-shrink: 0;
+    align-self:stretch;
+    width:320px;
+  }
+
+  .section-main {
+    flex:1;
+    align-self:stretch;
+
+    .dropdown-box {
+      &.size-auto {
+        width:120px;
+      }
+
+      .dropdown-list {
+        z-index:1009;
+      }
+    }
+
+    div.error,
+    .qs-datepicker-container {
+      z-index:1009;
+    }
+
+    .editor-area {
+      margin-top:20px;
+
+      .ck-editor .ck-editor__main {
+        overflow:auto;
+        resize:vertical;
+      }
+    }
+
+    .btn {
+      width:68px;
+    }
+  }
+}

@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/* flex */
+/* font */
+/* text cutting */
+.product-setting {
+  padding-bottom: 0px;
+}
+
+.product-edit .section-box .section-content {
+  padding-top: 20px;
+  padding-bottom: 35px;
+  border-bottom: 5px solid #F5F5F5;
+}
+.product-edit .section-box.info .section-content .input-row-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px 40px;
+  flex-wrap: wrap;
+}
+.product-edit .section-box.info .section-content .input-row-group .input-row {
+  width: 480px;
+  margin-top: 0px;
+  padding-left: 130px;
+}
+.product-edit .section-box.info .section-content .input-row-group .input-row > label, .product-edit .section-box.info .section-content .input-row-group .input-row > .label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  margin-bottom: 0px;
+  font-size: 16px;
+  line-height: 40px;
+}
+.product-edit .section-box.price .section-title {
+  justify-content: space-between;
+}
+.product-edit .section-box.price .section-content .price-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px 0px;
+}
+.product-edit .section-box.price .section-content .price-list .price-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 10px;
+  padding-left: 47px;
+}
+.product-edit .section-box.price .section-content .price-list .price-item .drag-bar {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  z-index: 1;
+  width: 32px;
+  height: 36px;
+  margin-top: -18px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  font-size: 0px;
+  cursor: move;
+}
+.product-edit .section-box.price .section-content .price-list .price-item .drag-bar:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 8px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -4px;
+  border-left: 2px solid #C2C2C2;
+  border-right: 2px solid #C2C2C2;
+  box-sizing: border-box;
+  content: "";
+}
+.product-edit .section-box.price .section-content .price-list .price-item .input-box {
+  width: 320px;
+}
+.product-edit .section-box.price .section-content .price-list .price-placeholder {
+  width: 100%;
+  height: 40px;
+  border: 1px dashed #E0E0E0;
+  border-radius: 5px;
+}
+.product-edit .section-box.image .section-title {
+  justify-content: space-between;
+}
+.product-edit .section-box.image .section-title label input {
+  display: none;
+}
+.product-edit .section-box.image .section-content {
+  overflow-x: overlay;
+}
+.product-edit .section-box.image .section-content .image-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 10px;
+}
+.product-edit .section-box.image .section-content .image-list:empty:before {
+  display: block;
+  width: 100%;
+  padding: 80px 0px;
+  color: #9E9E9E;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  content: "등록된 상품 이미지가 없습니다.";
+}
+.product-edit .section-box.image .section-content .image-list .image-item {
+  padding-top: 47px;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .drag-bar {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  z-index: 1;
+  width: 36px;
+  height: 32px;
+  margin-left: -16px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  font-size: 0px;
+  cursor: move;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .drag-bar:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 20px;
+  height: 8px;
+  margin-top: -4px;
+  margin-left: -10px;
+  border-top: 2px solid #C2C2C2;
+  border-bottom: 2px solid #C2C2C2;
+  box-sizing: border-box;
+  content: "";
+}
+.product-edit .section-box.image .section-content .image-list .image-item .thumb {
+  width: 285px;
+  height: 200px;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .thumb input {
+  display: none;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .btn-group #represent-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px 5px;
+  padding: 9px 9px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  color: #757575;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .btn-group #represent-btn.on {
+  background: #008086;
+  border-color: #008086;
+  color: #fff;
+}
+.product-edit .section-box.image .section-content .image-list .image-item .btn-group #represent-btn.on:before {
+  width: 15px;
+  height: 10px;
+  background: url(../imgs/icon_represent.svg) no-repeat center center;
+  content: "";
+}
+.product-edit .section-box.image .section-content .image-list .image-placeholder {
+  width: 285px;
+  height: 297px;
+  border: 1px dashed #E0E0E0;
+  border-radius: 5px;
+}
+.product-edit .section-box.content .section-content {
+  min-height: 450px;
+}
+.product-edit .section-box.content .section-content .ck-editor .ck-editor__main {
+  height: 400px;
+  overflow: auto;
+  resize: vertical;
+}
+.product-edit .btn-row-group {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart-list {
+  padding-bottom: 0px;
+}
+.cart-list .article-title .right-group {
+  gap: 0px 10px;
+}
+.cart-list .article-title .right-group .btn.type-black-line {
+  width: 80px;
+}
+.cart-list .section-content {
+  margin-top: 40px;
+}
+
+.order-list {
+  padding-bottom: 0px;
+}
+.order-list .article-title .right-group {
+  gap: 0px 10px;
+}
+.order-list .article-title .right-group .btn.type-black-line {
+  width: 80px;
+}
+.order-list .section-title {
+  justify-content: space-between;
+}
+.order-list .section-title .total-price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 10px;
+  color: #757575;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.order-list .section-title .total-price strong {
+  color: #0A0A0A;
+  font-weight: bold;
+}
+.order-list .section-content {
+  margin-top: 40px;
+}

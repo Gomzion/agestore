@@ -1,0 +1,294 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.product-setting {
+  padding-bottom:0px;
+}
+
+.product-edit {
+  .section-box {
+    .section-content {
+      padding-top:20px;
+      padding-bottom:35px;
+      border-bottom:5px solid $gray01;
+    }
+
+    &.info {
+      .section-content {
+        .input-row-group {
+          @include flex();
+          gap:20px 40px;
+          flex-wrap:wrap;
+
+          .input-row {
+            width:480px;
+            margin-top:0px;
+            padding-left:130px;
+      
+            > label, > .label {
+              position:absolute;
+              top:0px;
+              left:0px;
+              z-index:1;
+              margin-bottom:0px;
+              font-size:16px;
+              line-height: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    &.price {
+      .section-title {
+        justify-content: space-between;
+      }
+
+      .section-content {
+        .price-list {
+          @include flex();
+          flex-direction: column;
+          gap:10px 0px;
+
+          .price-item {
+            @include flex();
+            gap:0px 10px;
+            padding-left:47px;
+
+            .drag-bar {
+              position:absolute;
+              top:50%;
+              left:0px;
+              z-index:1;
+              width:32px;
+              height:36px;
+              margin-top:-18px;
+              background: #fff;
+              border:1px solid $gray03;
+              border-radius:5px;
+              font-size:0px;
+              cursor:move;
+
+              &:before {
+                position:absolute;
+                top:50%;
+                left:50%;
+                z-index:1;
+                width:8px;
+                height:20px;
+                margin-top:-10px;
+                margin-left:-4px;
+                border-left:2px solid $gray04;
+                border-right:2px solid $gray04;
+                box-sizing:border-box;
+                content:"";
+              }
+            }
+            
+            .input-box {
+              width:320px;
+            }
+          }
+
+          .price-placeholder {
+            width:100%;
+            height:40px;
+            border:1px dashed $gray03;
+            border-radius:5px;
+          }
+        }
+      }
+    }
+
+    &.image {
+      .section-title {
+        justify-content: space-between;
+
+        label {
+          input {
+            display:none;
+          }
+        }
+      }
+      
+      .section-content {
+        overflow-x:overlay;
+
+        .image-list {
+          @include flex();
+          gap:0px 10px;
+
+          &:empty {
+            &:before {
+              display:block;
+              width:100%;
+              padding:80px 0px;
+              @include font($gray05, 14px, 20px);
+              text-align: center;
+              content:"등록된 상품 이미지가 없습니다.";
+            }
+          }
+
+          .image-item {
+            padding-top:47px;
+
+            .drag-bar {
+              position:absolute;
+              top:0px;
+              left:50%;
+              z-index:1;
+              width:36px;
+              height:32px;
+              margin-left:-16px;
+              background: #fff;
+              border:1px solid $gray03;
+              border-radius:5px;
+              font-size:0px;
+              cursor:move;
+
+              &:before {
+                position:absolute;
+                top:50%;
+                left:50%;
+                z-index:1;
+                width:20px;
+                height:8px;
+                margin-top:-4px;
+                margin-left:-10px;
+                border-top:2px solid $gray04;
+                border-bottom:2px solid $gray04;
+                box-sizing:border-box;
+                content:"";
+              }
+            }
+
+            .thumb {
+              width:285px;
+              height:200px;
+              border:1px solid $gray02;
+              border-radius:10px;
+              overflow:hidden;
+
+              input {
+                display:none;
+              }
+
+              img {
+                width:100%;
+                height:100%;
+                object-fit: cover;
+              }
+            }
+
+            .btn-group {
+              @include flex(space-between, center);
+              margin-top:10px;
+
+              #represent-btn {
+                @include flex(center, center);
+                gap:0px 5px;
+                padding:9px 9px;
+                background: #fff;
+                border:1px solid $gray03;
+                border-radius:5px;
+                @include font($gray06, 14px, 20px);
+                font-weight: bold;
+
+                &.on {
+                  background: $green;
+                  border-color:$green;
+                  color:#fff;
+
+                  &:before {
+                    width:15px;
+                    height:10px;
+                    background:url(../imgs/icon_represent.svg) no-repeat center center;
+                    content:"";
+                  }
+                }
+              }
+            }
+          }
+
+          .image-placeholder {
+            width:285px;
+            height:297px;
+            border:1px dashed $gray03;
+            border-radius:5px;
+          }
+        }
+      }
+    }
+
+    &.content {
+      .section-content {
+        min-height:450px;
+        
+        .ck-editor .ck-editor__main {
+          height:400px;
+          overflow:auto;
+          resize:vertical;
+        }
+      }
+    }
+  }
+
+  .btn-row-group {
+    width:320px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+.cart-list {
+  padding-bottom:0px;
+
+  .article-title {
+    .right-group {
+      gap:0px 10px;
+
+      .btn.type-black-line {
+        width:80px;
+      }
+    }
+  }
+
+  .section-content {
+    margin-top:40px;
+  }
+}
+
+.order-list {
+  padding-bottom:0px;
+
+  .article-title {
+    .right-group {
+      gap:0px 10px;
+      
+      .btn.type-black-line {
+        width:80px;
+      }
+    }
+  }
+
+  .section-title {
+    justify-content: space-between;
+    
+    .total-price {
+      @include flex();
+      gap:0px 10px;
+      @include font($gray06, 16px, 24px);
+      font-weight: 500;
+
+      strong {
+        color:$gray09;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .section-content {
+    margin-top:40px;
+  }
+}

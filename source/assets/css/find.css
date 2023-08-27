@@ -1,0 +1,171 @@
+/* flex */
+/* font */
+/* text cutting */
+.find-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+  background: #F5F5F5;
+}
+.find-box .inner {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.find-box .inner .title-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.find-box .inner .title-box h5 {
+  position: relative;
+  padding-left: 9px;
+  color: #0A0A0A;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+}
+.find-box .inner .title-box h5:before {
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  z-index: 1;
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(123.72deg, #DB0025 3.86%, #910012 74.25%);
+  border-radius: 2px;
+  content: "";
+}
+.find-box .inner .form-box {
+  margin-top: 20px;
+}
+.find-box .inner .form-box .desc {
+  color: #0A0A0A;
+  font-size: 14px;
+  line-height: 20px;
+}
+.find-box .inner .form-box .desc strong {
+  color: #DB0025;
+}
+.find-box .inner .form-box .input-row-group {
+  margin-top: 40px;
+}
+.find-box .inner .form-box .input-row-group .input-row > label, .find-box .inner .form-box .input-row-group .input-row > .label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0px 5px;
+}
+.find-box .inner .form-box .input-row-group .input-row > label .valid-icon, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon {
+  font-weight: normal;
+}
+.find-box .inner .form-box .input-row-group .input-row > label .valid-icon.required, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon.required {
+  color: #DB0025;
+  font-size: 12px;
+  line-height: 18px;
+}
+.find-box .inner .form-box .input-row-group .input-row > label .valid-icon.optional, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon.optional {
+  color: #757575;
+  font-size: 12px;
+  line-height: 18px;
+}
+.find-box .inner .form-box .input-row-group .input-row.valid-row > label .valid-icon.required, .find-box .inner .form-box .input-row-group .input-row.valid-row > .label .valid-icon.required {
+  width: 30px;
+  height: 18px;
+  background: url(../imgs/icon_valid.svg) no-repeat center center;
+  background-size: 16px 16px;
+  font-size: 0px;
+}
+.find-box .inner .result-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  margin-top: 40px;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+}
+.find-box .inner .result-box p {
+  color: #0A0A0A;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: bold;
+  text-align: center;
+}
+.find-box .inner .result-empty {
+  margin-top: 28px;
+  color: #DB0025;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+@container (min-width: 768px) {
+  .find-box {
+    padding: 40px 20px;
+  }
+  .find-box .inner {
+    width: 600px;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+  }
+  .find-box .inner .title-box h5 {
+    padding-left: 14px;
+    font-size: 24px;
+    line-height: 36px;
+  }
+  .find-box .inner .title-box h5:before {
+    top: 10px;
+    height: 16px;
+  }
+  .find-box .inner .form-box {
+    margin-top: 24px;
+  }
+  .find-box .inner .form-box .desc {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .find-box .inner .form-box .input-row-group {
+    margin-top: 60px;
+  }
+  .find-box .inner .form-box .input-row-group .input-row {
+    padding-left: 160px;
+  }
+  .find-box .inner .form-box .input-row-group .input-row > label, .find-box .inner .form-box .input-row-group .input-row > .label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    margin-bottom: 0px;
+  }
+  .find-box .inner .form-box .input-row-group .input-row > label .valid-icon, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon {
+    font-weight: normal;
+  }
+  .find-box .inner .form-box .input-row-group .input-row > label .valid-icon.required, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon.required {
+    color: #DB0025;
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .find-box .inner .form-box .input-row-group .input-row > label .valid-icon.optional, .find-box .inner .form-box .input-row-group .input-row > .label .valid-icon.optional {
+    color: #757575;
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .find-box .inner .form-box .input-row-group .input-row.valid-row > label .valid-icon.required, .find-box .inner .form-box .input-row-group .input-row.valid-row > .label .valid-icon.required {
+    width: 36px;
+    height: 40px;
+    background-size: 20px 20px;
+  }
+  .find-box .inner .result-box {
+    height: 110px;
+  }
+  .find-box .inner .result-box p {
+    font-size: 20px;
+  }
+}

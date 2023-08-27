@@ -1,0 +1,118 @@
+/* flex */
+/* font */
+/* text cutting */
+.section-box.mypage .section-content {
+  padding-bottom: 15px;
+  border-bottom: 5px solid #F5F5F5;
+}
+.section-box.mypage .section-content .mypage-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px 10px;
+  margin-top: 20px;
+  color: #0A0A0A;
+  font-size: 14px;
+  line-height: 20px;
+}
+.section-box.mypage .section-content .mypage-info p {
+  flex-shrink: 0;
+  width: 100px;
+  font: inherit;
+  font-weight: 500;
+}
+.section-box.mypage .section-content .mypage-info .agency-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px 0px;
+  flex-direction: column;
+  font: inherit;
+}
+.section-box.mypage .section-content .mypage-info .agency-box .modal-btn {
+  width: 100%;
+  padding: 8px 0px;
+  background: #fff;
+  border: 1px solid #0A0A0A;
+  border-radius: 5px;
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+}
+.section-box.mypage .section-content .mypage-info .phone-box {
+  flex: 1;
+}
+.section-box.mypage .section-content .mypage-info .phone-box .input-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0px 10px;
+  margin-bottom: 10px;
+}
+.section-box.mypage .section-content .mypage-info .phone-box .input-row:last-child {
+  margin-bottom: 0px;
+}
+.section-box.mypage .section-content .mypage-info .phone-box .input-row .input-box {
+  width: 100%;
+  max-width: 370px;
+}
+.section-box.mypage .section-content .mypage-info .phone-box .input-row .phone-change-cert,
+.section-box.mypage .section-content .mypage-info .phone-box .input-row .phone-change {
+  flex-shrink: 0;
+  width: 80px;
+  padding: 8px 0px;
+  background: #fff;
+  border: 1px solid #0A0A0A;
+  border-radius: 5px;
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+}
+.section-box.mypage.password .section-content .mypage-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.section-box.mypage.password .section-content .mypage-info .input-box {
+  flex: 1;
+  max-width: 500px;
+}
+
+@container (min-width: 768px) {
+  .section-box.mypage {
+    margin-top: 20px;
+  }
+  .section-box.mypage .section-content {
+    padding-bottom: 35px;
+  }
+  .section-box.mypage .section-content .mypage-info {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .section-box.mypage .section-content .mypage-info p {
+    width: auto;
+  }
+  .section-box.mypage .section-content .mypage-info p.big {
+    line-height: 40px;
+  }
+  .section-box.mypage .section-content .mypage-info .agency-box {
+    align-items: center;
+    gap: 0px 10px;
+    flex-direction: row;
+  }
+  .section-box.mypage .section-content .mypage-info .agency-box .modal-btn {
+    width: auto;
+    padding: 9px 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .section-box.mypage .section-content .mypage-info .phone-box .input-row .phone-change-cert,
+  .section-box.mypage .section-content .mypage-info .phone-box .input-row .phone-change {
+    width: 120px;
+    padding: 9px 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

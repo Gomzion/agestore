@@ -1,0 +1,277 @@
+/* flex */
+/* font */
+/* text cutting */
+.modal {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.modal.open {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 1;
+}
+.modal.open-out {
+  opacity: 0;
+}
+.modal .modal-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 40px 10px 0px 10px;
+  overflow-y: overlay;
+  text-align: center;
+}
+.modal .modal-container {
+  margin-bottom: 40px;
+  padding: 0px 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+.modal .modal-container .title-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px 0px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.modal .modal-container .title-box h5 {
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+}
+.modal .modal-container .title-box .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  background: transparent url(../imgs/icon_close.svg) no-repeat center center;
+  background-size: 24px 24px;
+  border: none;
+  font-size: 0px;
+}
+
+#login-popup.modal .modal-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0px;
+  max-height: 580px;
+}
+#login-popup.modal .modal-container .notice-box {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  overflow: overlay;
+}
+#login-popup.modal .modal-container .btn-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-top: 1px solid #E0E0E0;
+}
+#login-popup.modal .modal-container .btn-box button {
+  flex: 1;
+  height: 40px;
+  color: #000;
+  font-size: 12px;
+  line-height: 18px;
+}
+#login-popup.modal .modal-container .btn-box button:first-child {
+  border-right: 1px solid #E0E0E0;
+}
+
+#main-popup.modal .modal-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0px;
+  max-height: 580px;
+}
+#main-popup.modal .modal-container .notice-box {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  overflow: overlay;
+}
+#main-popup.modal .modal-container .btn-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-top: 1px solid #E0E0E0;
+}
+#main-popup.modal .modal-container .btn-box button {
+  flex: 1;
+  height: 40px;
+  color: #000;
+  font-size: 12px;
+  line-height: 18px;
+}
+#main-popup.modal .modal-container .btn-box button:first-child {
+  border-right: 1px solid #E0E0E0;
+}
+
+#term-service.modal .title-box,
+#term-privacy.modal .title-box,
+#term-dlvy.modal .title-box {
+  flex-direction: column;
+  padding: 20px 0px;
+  border-bottom: 1px solid #E0E0E0;
+}
+#term-service.modal .title-box h5,
+#term-privacy.modal .title-box h5,
+#term-dlvy.modal .title-box h5 {
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+}
+#term-service.modal .title-box p,
+#term-privacy.modal .title-box p,
+#term-dlvy.modal .title-box p {
+  margin-top: 5px;
+  color: #757575;
+  font-size: 14px;
+  line-height: 20px;
+}
+#term-service.modal .content-box,
+#term-privacy.modal .content-box,
+#term-dlvy.modal .content-box {
+  max-height: 472px;
+  margin: 20px 0px;
+  overflow: overlay;
+}
+
+#cart.modal .form-box {
+  padding: 20px 0px;
+}
+#cart.modal .form-box .submit-btn {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #E0E0E0;
+}
+#cart.modal .form-box .submit-btn input[type=submit] {
+  width: 100%;
+  height: 36px;
+  background: linear-gradient(123.72deg, #DB0025 3.86%, #910012 74.25%);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+}
+
+#onekey.modal .form-box {
+  padding: 20px 0px;
+}
+#onekey.modal .form-box .input-row-group .input-row.not-label {
+  margin-top: 10px;
+}
+#onekey.modal .form-box .input-row-group .input-row > label,
+#onekey.modal .form-box .input-row-group .input-row > .label {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+}
+#onekey.modal .form-box .input-row-group .input-row #onekey-search {
+  height: 36px;
+  background: #0A0A0A;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+}
+#onekey.modal .form-box .submit-btn {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #E0E0E0;
+}
+#onekey.modal .form-box .submit-btn input[type=submit] {
+  width: 100%;
+  height: 36px;
+  background: linear-gradient(123.72deg, #DB0025 3.86%, #910012 74.25%);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+}
+
+@container (min-width: 768px) {
+  .modal .modal-container .title-box h5 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .modal .modal-container .title-box .close-btn {
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+  }
+  #login-popup.modal .modal-container {
+    max-height: 640px;
+  }
+  #login-popup.modal .modal-container .btn-box button {
+    height: 48px;
+    font-size: 16px;
+  }
+  #term-service.modal .title-box h5,
+  #term-privacy.modal .title-box h5,
+  #term-dlvy.modal .title-box h5 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #term-service.modal .title-box p,
+  #term-privacy.modal .title-box p,
+  #term-dlvy.modal .title-box p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #term-service.modal .content-box,
+  #term-privacy.modal .content-box,
+  #term-dlvy.modal .content-box {
+    max-height: 640px;
+    font-size: 16px;
+  }
+  #cart.modal .form-box .submit-btn input[type=submit] {
+    height: 40px;
+    font-size: 16px;
+  }
+  #onekey.modal .form-box .input-row-group .input-row > label,
+  #onekey.modal .form-box .input-row-group .input-row > .label {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  #onekey.modal .form-box .input-row-group .input-row #onekey-search {
+    height: 40px;
+    font-size: 14px;
+  }
+  #onekey.modal .form-box .submit-btn input[type=submit] {
+    height: 40px;
+    font-size: 16px;
+  }
+}

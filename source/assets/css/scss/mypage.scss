@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+
+.section-box.mypage {
+  .section-content {
+    padding-bottom:15px;
+    border-bottom:5px solid $gray01;
+
+    .mypage-info {
+      @include flex();
+      gap:0px 10px;
+      margin-top:20px;
+      @include font($gray09, 14px, 20px);
+
+      p {
+        flex-shrink:0;
+        width:100px;
+        font:inherit;
+        font-weight: 500;
+      }
+
+      .agency-box {
+        @include flex();
+        gap:10px 0px;
+        flex-direction:column;
+        font:inherit;
+
+        .modal-btn {
+          width:100%;
+          padding:8px 0px;
+          background: #fff;
+          border:1px solid $gray09;
+          border-radius:5px;
+          @include font($gray09, 12px, 18px);
+          font-weight: bold;
+        }
+      }
+
+      .phone-box {
+        flex:1;
+
+        .input-row {
+          @include flex(flex-start, center);
+          gap:0px 10px;
+          margin-bottom:10px;
+
+          &:last-child {
+            margin-bottom:0px;  
+          }
+
+          .input-box {
+            width:100%;
+            max-width:370px;
+          }
+
+          .phone-change-cert,
+          .phone-change {
+            flex-shrink:0;
+            width:80px;
+            padding:8px 0px;
+            background: #fff;
+            border:1px solid $gray09;
+            border-radius:5px;
+            @include font($gray09, 12px, 18px);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  &.password {
+    .section-content {
+      .mypage-info {
+        @include flex(flex-start, center);
+
+        .input-box {
+          flex:1;
+          max-width:500px;
+        }
+      }
+    }
+  }
+}
+
+@container (min-width: 768px) {
+
+.section-box.mypage {
+  margin-top:20px;
+
+  .section-content {
+    padding-bottom:35px;
+
+    .mypage-info {
+      font-size:16px;
+      line-height: 24px;
+
+      p {
+        width:auto;
+
+        &.big {
+          line-height: 40px;
+        }
+      }
+
+      .agency-box {
+        align-items:center;
+        gap:0px 10px;
+        flex-direction:row;
+
+        .modal-btn {
+          width:auto;
+          padding:9px 10px;
+          font-size:14px;
+          line-height: 20px;
+        }
+      }
+
+      .phone-box {
+        .input-row {
+          .phone-change-cert,
+          .phone-change {
+            width:120px;
+            padding:9px 10px;
+            font-size:14px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+}
