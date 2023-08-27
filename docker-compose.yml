@@ -1,13 +1,16 @@
-version: '2'
+version: '3'
 services:
-    gomzion:
-        image: ghcr.io/gomzion/ag_estore:0.2
+    ubuntu:
+        image: ghcr.io/gomzion/ag_estore:latest
         container_name: nginx_php81_mssql
+        build:
+            context: ./images/ubuntu
+            dockerfile: Dockerfile
         stdin_open: true
         tty: true
         volumes:
             - ./source:/var/www/html
-            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./images/ubuntu/conf/nginx.conf:/etc/nginx/conf.d/default.conf
         ports:
             - "80:80"
             - "443:443"
