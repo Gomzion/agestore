@@ -2,7 +2,7 @@ version: '3'
 services:
     ubuntu:
         image: ghcr.io/gomzion/ag_estore:latest
-        container_name: nginx_php81_mssql
+        container_name: AGeStore
         build:
             context: ./images/ubuntu
             dockerfile: Dockerfile
@@ -11,6 +11,9 @@ services:
         volumes:
             - ./source:/var/www/html
             - ./images/ubuntu/conf/nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./images/ubuntu/php/php.ini:/etc/php/8.1/fpm/php.ini
+            - ./images/ubuntu/so/okcert3_2.0.2_ext_linux64_glibc2.17__8.1.so:/usr/lib/php/20210902/okcert3.so
+            - ./images/ubuntu/cert/ca-bundle.crt:/etc/pki/tls/certs/ca-bundle.crt
         ports:
             - "80:80"
             - "443:443"
