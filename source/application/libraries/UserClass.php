@@ -15,8 +15,8 @@ class UserClass {
 	public $USER_AFFIL_NM = "";
 	public $USER_AFFIL_NO = "";
 	public $HOSPITAL_CD = "";
+	public $HOSPITAL_SALES_CD = "";
 	public $OPD_CD = "";
-	public $SALESMAN_CD = "";
 	public $USER_SIGN_IL = null;
 	public $USER_TSV_DT = "";
 	public $USER_TPP_DT = "";

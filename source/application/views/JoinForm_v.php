@@ -112,6 +112,7 @@
 								   class="business-number"
 								   maxlength="12"
 								   placeholder="사업자 등록번호를 입력해 주세요."
+								   readonly
 							/>
 						</div>
 					</div>
@@ -221,8 +222,9 @@
 								   placeholder="영업 사원 코드를 입력해 주세요."
 							/>
 						</div>
+						<p class="desc">담당 영업사원이 없는 경우 별도의 할인 서비스를 제공합니다.</p>
 					</div>
-					<div class="input-row">
+					<!--<div class="input-row">
 						<label for="sales_info">
 							<span class="valid-icon optional">[선택]</span>
 							영업 사원 이름
@@ -236,8 +238,7 @@
 							/>
 						</div>
 
-						<p class="desc">담당 영업사원이 없는 경우 별도의 할인 서비스를 제공합니다.</p>
-					</div>
+					</div>-->
 
 					<div class="form-sign" id="sign">
 						<canvas></canvas>

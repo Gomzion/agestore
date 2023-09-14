@@ -13,6 +13,9 @@ source/composer.lock
 source/vendor/
 source/pb/
 source/pb2/
+source/pb3/
+source/pb4/
+source/uploads/
 
 # IDE Files
 #-------------------------

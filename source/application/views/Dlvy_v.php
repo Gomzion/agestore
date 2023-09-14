@@ -62,7 +62,7 @@
 										</div>
 
 										<div class="product-info">
-											<p class="product-name"><?php echo $gs['GOODS_ID']?></p>
+											<p class="product-name"><?php echo $gs['GOODS_NM']?></p>
 											<?php if($this->session->userdata['sales']) {?>
 												<p class="product-opt"><?php echo $gs['GPRICE_AMT'];?> BOX - <?php echo number_format($gs['GPRICE_SALE_PC']);?>원 <?php if($gs['GPRICE_PC']) {?><?php echo round(100-($gs['GPRICE_SALE_PC']/$gs['GPRICE_PC']*100));?>% 할인 상품<?php } ?></p>
 											<?php } else { ?>

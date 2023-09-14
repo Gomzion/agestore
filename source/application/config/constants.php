@@ -108,3 +108,5 @@ defined('HOME_ADMIN')        OR define('HOME_ADMIN', '/SanGoods');
 
 defined('IMG_GOODPATH')        OR define('IMG_GOODPATH', './uploads/goods/');
 defined('IMG_PATH')        OR define('IMG_PATH', '/uploads/goods/');
+
+defined('GOBACK_AGMVP')        OR define('GOBACK_AGMVP', 'http://gomzion.iptime.org');

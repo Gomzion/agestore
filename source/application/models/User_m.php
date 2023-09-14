@@ -48,11 +48,43 @@ class User_m extends CI_Model
 	}
 
 	/// @brief UserID 정보 가져오기
-	/// @return 복호화된 비밀번호
+	/// @return 유저정보
 	function getUser($userid)
 	{
 		$this->db->from('TBL_USER');
 		$this->db->where('USER_ID',$userid);
+		$result = $this->db->get();
+		//echo $this->db->last_query();
+
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
+			return false;
+		}
+	}
+
+	/// @brief UserID 정보 가져오기 - 임시정보
+	/// @return 임시정보
+	function getUserTemp($sq)
+	{
+		$this->db->from('TBL_USER_TEMP');
+		$this->db->where('UTMP_SQ',$sq);
+		$result = $this->db->get();
+		//echo $this->db->last_query();
+
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
+			return false;
+		}
+	}
+
+	/// @brief UserID 정보 가져오기 - 실명인증
+	/// @return 유저정보
+	function getUserHpnum($hpnum)
+	{
+		$this->db->from('TBL_USER');
+		$this->db->where("replace(USER_HPN_NO,'-','')",$hpnum);
 		$result = $this->db->get();
 		//echo $this->db->last_query();
 
@@ -101,9 +133,9 @@ class User_m extends CI_Model
 
 	/// @brief UserID update
 	/// @return	none
-	function updatePassword($newpw)
+	function updatePassword($newpw, $userid='')
 	{
-		$userid = $this->session->userdata['id'];
+		if(!$userid) $userid = $this->session->userdata['id'];
 
 		$encrptpw = convertToVarbinary($newpw);
 
@@ -130,6 +162,7 @@ class User_m extends CI_Model
 			'USER_AFFIL_NM' => $user->USER_AFFIL_NM,
 			'USER_AFFIL_NO' => $user->USER_AFFIL_NO,
 			'HOSPITAL_CD' => $user->HOSPITAL_CD,
+			'HOSPITAL_SALES_CD' => $user->HOSPITAL_SALES_CD,
 			'OPD_CD' => $user->OPD_CD,
 			'USER_TSV_DT' => $user->USER_TSV_DT,
 			'USER_TPP_DT' => $user->USER_TPP_DT,
@@ -140,8 +173,8 @@ class User_m extends CI_Model
 
 		$data['USER_PW'] = convertToVarbinary($data['USER_PW']);
 
-		$sql = "INSERT INTO TBL_USER (USER_ID, USER_PW, USER_LV, USER_NM, USER_HPN_NO, USER_HPN_FL, USER_AFFIL_NM, USER_AFFIL_NO, HOSPITAL_CD, OPD_CD, USER_TSV_DT, USER_TPP_DT, USER_LAST_DT, USER_REG_DT, USER_SIGN_IL)
-        VALUES (?, CONVERT(varbinary(max), ?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CONVERT(VARBINARY(MAX), ?))";
+		$sql = "INSERT INTO TBL_USER (USER_ID, USER_PW, USER_LV, USER_NM, USER_HPN_NO, USER_HPN_FL, USER_AFFIL_NM, USER_AFFIL_NO, HOSPITAL_CD, HOSPITAL_SALES_CD, OPD_CD, USER_TSV_DT, USER_TPP_DT, USER_LAST_DT, USER_REG_DT, USER_SIGN_IL)
+        VALUES (?, CONVERT(varbinary(max), ?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CONVERT(VARBINARY(MAX), ?))";
 
 		$result = $this->db->query($sql, $data);
 
@@ -151,6 +184,53 @@ class User_m extends CI_Model
 		} else {
 			// Insert failed
 			log_message('error', 'Database Error: ' . $this->db->error()['message']);
+			return false;
+		}
+	}
+
+	/// @brief	신규 회원 저장 - 임시
+	/// @return boolean
+	function insertUserTemp($user, $filename, $filecontents)
+	{
+		$data = array(
+			'UTMP_ID' => $user->USER_ID,
+			'UTMP_NM' => $user->USER_NM,
+			'UTMP_HPN_NO' => $user->USER_HPN_NO,
+			'UTMP_SIGN_IL' => $user->USER_SIGN_IL,
+			'UTMP_HOSP_CD' => $user->HOSPITAL_CD,
+			'UTMP_SALES_CD' => $user->SALESMAN_CD,
+			'UTMP_CORP_IL' => $filecontents,
+			'UTMP_CORP_NM' => $filename
+		);
+
+		$sql = "INSERT INTO TBL_USER_TEMP (UTMP_ID, UTMP_NM, UTMP_HPN_NO, UTMP_SIGN_IL, UTMP_HOSP_CD, UTMP_SALES_CD, UTMP_CORP_IL, UTMP_CORP_NM)
+        VALUES (?, ?, ?, CONVERT(varbinary(max), ?), ?, ?, CONVERT(VARBINARY(MAX), ?), ?)";
+
+		$result = $this->db->query($sql, $data);
+
+		if ($result) {
+			// Insert successful
+			return $this->db->insert_id();
+		} else {
+			// Insert failed
+			log_message('error', 'Database Error: ' . $this->db->error()['message']);
+			return -1;
+		}
+	}
+
+	/// @brief 기관 정보 가져오기 - 사업자등록번호
+	/// @return 결과 쿼리
+	function getHospitalFromCorp($corpid, $sid='cso')
+	{
+		$this->db->from('TBL_HOSPITAL');
+		$this->db->where('HOSPITAL_CORP_CD',$corpid);
+		if($sid != 'cso') $this->db->where('HOSPITAL_SALES_CD',$sid);
+		$result = $this->db->get();
+		//echo $this->db->last_query();
+
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
 			return false;
 		}
 	}
@@ -227,12 +307,14 @@ class User_m extends CI_Model
 	/// @return query result
 	function getHospitalSearch($state, $region, $keyword)
 	{
-		$this->db->select('*');
+		$this->db->select('distinct(HOSPITAL_CD), HOSPITAL_NM, HOSPITAL_CORP_CD');
 		$this->db->from('TBL_HOSPITAL');
 		$this->db->where('HOSPITAL_SDO_NM', $state);
 		$this->db->where('HOSPITAL_SGG_NM', $region);
 		$this->db->like('HOSPITAL_NM', $keyword); // Use like() method for the district/county search
+		//$this->db->group_by('HOSPITAL_CD');
 		$result = $this->db->get();
+		//echo $this->db->last_query();
 
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -251,6 +333,33 @@ class User_m extends CI_Model
 
 		if ($result->num_rows() > 0) {
 			return $result->result();
+		} else {
+			return false;
+		}
+	}
+
+	/// @brief 병원정보 업데이트 - 파일만
+	/// @return query result
+	function updateHospitalFile($hid, $sales_co, $fname, $fcontent)
+	{
+		//$sql = "UPDATE TBL_HOSPITAL SET HOSPITAL_CORP_CD = ?, HOSPITAL_CORP_NM = ?, HOSPITAL_CORP_IL = CONVERT(VARBINARY(MAX), ?), HOSPITAL_SALES_CD = ?, HOSPITAL_SALES_NM = ? WHERE HOSPITAL_CD = ?";
+		//$params = array($ccd, $fname, $fcontent, $sales_co, $sales_nm, $hid);
+		//$this->db->query($sql, $params);
+
+		$data = array();
+		if ($fname) {
+			$data['HOSPITAL_CORP_NM'] = $fname;
+		}
+		if ($fcontent) {
+			$this->db->set('HOSPITAL_CORP_IL', "CONVERT(VARBINARY(MAX), '$fcontent')", FALSE);
+			// Use FALSE as the third parameter to prevent CodeIgniter from automatically escaping the value
+		}
+
+		$this->db->where('HOSPITAL_CD', $hid);
+		$this->db->where('HOSPITAL_SALES_CD', $sales_co);
+
+		if ($this->db->update('TBL_HOSPITAL', $data)) {
+			return true;
 		} else {
 			return false;
 		}
@@ -323,6 +432,7 @@ class User_m extends CI_Model
 			$this->db->like('H.HOSPITAL_NM', $sw);
 			$this->db->or_like('U.USER_NM', $sw);
 		}
+		//$this->db->where('U.USER_LV >', LEVEL_ADMIN);
 		$this->db->group_by('H.HOSPITAL_CD, H.HOSPITAL_NM, H.HOSPITAL_CORP_CD, H.HOSPITAL_SALES_CD, H.HOSPITAL_CORP_NM, H.HOSPITAL_SALES_NM, U.USER_ID, U.USER_NM');
 		$this->db->order_by('H.HOSPITAL_CD','ASC');
 
@@ -346,6 +456,7 @@ class User_m extends CI_Model
 
 		if ($result->num_rows() > 0) {
 
+			$emails = array();
 			$data = array();
 			foreach ($result->result() as $row) {
 				// HOSPITAL_CD 기준으로 애들을 묶어.
@@ -360,9 +471,14 @@ class User_m extends CI_Model
 					$data[$row->HOSPITAL_CD]->USER_ID = $row->USER_ID;
 					$data[$row->HOSPITAL_CD]->USER_NM = $row->USER_NM;
 					$data[$row->HOSPITAL_CD]->TOTAL_PAY_PAID = $row->TOTAL_PAY_PAID;
+
+					array_push($emails, $row->USER_ID);
 				} else {
-					$data[$row->HOSPITAL_CD]->USER_ID .= ", ".$row->USER_ID;
-					$data[$row->HOSPITAL_CD]->USER_NM .= ", ".$row->USER_NM;
+					if(!in_array($row->USER_ID, $emails)) {
+						$data[$row->HOSPITAL_CD]->USER_ID .= ", ".$row->USER_ID;
+						$data[$row->HOSPITAL_CD]->USER_NM .= ", ".$row->USER_NM;
+						array_push($emails, $row->USER_ID);
+					}
 					$data[$row->HOSPITAL_CD]->TOTAL_PAY_PAID += $row->TOTAL_PAY_PAID;
 				}
 			}

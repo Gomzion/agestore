@@ -36,7 +36,7 @@ const modalMatch = {
   },
   "term-dlvy" : {
     ...defaultModal,
-    url: "/components/modals/term/dlvy.php",
+    url: "/modal/terms_service",
     containerStyle: {
       "width":"100%",
       "max-width":"600px"

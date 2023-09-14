@@ -43,7 +43,7 @@ $(function() {
           for (let i = 0; i < response.list.length; i++) {
             listHtml += `
               <li>
-                <button type="button" id="${response.list[i].code}">${response.list[i].value}</button>
+                <button type="button" id="${response.list[i].code}" cd="${response.list[i].corp_cd}">${response.list[i].value}</button>
               </li>
             `;
           }
@@ -78,6 +78,7 @@ $(function() {
     $(".agency").closest(".input-row").removeClass("error-row").addClass("valid-row");
     box.find("input[name=agency]").val($(this).text());
 	box.find("input[name=hospital]").val(this.getAttribute('id'));
+	$("input[name=business_number]").val(this.getAttribute('cd'));
 
     box.find(".agency-list").slideUp();
     box.removeClass("open");

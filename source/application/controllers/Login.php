@@ -59,6 +59,7 @@ class Login extends CI_Controller
 
 		// 병원정보
 		$data["hospital_info"] = $this->User_m->getHospitalAddr();
+		//print_r($data["hospital_info"]);
 
 		// 시도 정보
 		$data["hospital_sdo"] = array();
@@ -112,16 +113,24 @@ class Login extends CI_Controller
 		$newuser->USER_PW = $this->input->post('password', TRUE);
 		$newuser->USER_HPN_NO = $this->input->post('phone', TRUE);
 		$newuser->USER_SIGN_IL = $this->input->post('signature');
+		$newuser->HOSPITAL_SALES_CD = $this->input->post('sales_info', TRUE);
+		$business_number = $this->input->post('business_number', TRUE);
+
+		// 사업자번호 + 영업사원번호로 조회된 기관이 있는지
+		$_hospital = $this->User_m->getHospitalFromCorp($business_number, $newuser->HOSPITAL_SALES_CD);
+		if(!$_hospital) {
+			alert('영업사원코드가 잘못되었거나, 없는 코드입니다');
+			exit;
+		}
 
 		// 병원 데이터 넣기
-		$corp_cd = $this->input->post('business_number', TRUE);
-		$corp_sales = $this->input->post('sales_info', TRUE);
-		$corp_sales_name = $this->input->post('sales_name', TRUE);
+		//$corp_sales_name = $this->input->post('sales_name', TRUE);
 		$fileData = file_get_contents($_FILES['business_license']['tmp_name']);
 		$base64fileData = base64_encode($fileData);
 		$fileName = $_FILES['business_license']['name'];
 
-		$this->User_m->updateHospital($newuser->HOSPITAL_CD, $corp_cd, $fileName, $base64fileData, $corp_sales, $corp_sales_name);
+		// 사업자등록증 업데이트
+		$this->User_m->updateHospitalFile($newuser->HOSPITAL_CD, $newuser->HOSPITAL_SALES_CD, $fileName, $base64fileData);
 
 		// 회원db에 입력 -- 비밀번호는 암호화
 		if($this->User_m->insertUserNew($newuser)) {
@@ -160,7 +169,7 @@ class Login extends CI_Controller
 		);
 
 		foreach ($data as $val) {
-			array_push($result["list"], array("code" => "$val->HOSPITAL_CD","value" => "$val->HOSPITAL_NM"));
+			array_push($result["list"], array("code" => "$val->HOSPITAL_CD","value" => "$val->HOSPITAL_NM","corp_cd" => "$val->HOSPITAL_CORP_CD"));
 		}
 
 		echo json_encode($result);

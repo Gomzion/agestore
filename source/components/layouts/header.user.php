@@ -2,7 +2,7 @@
   <div class="inner-top">
     <a href="/Common/goAdmin" class="mode-btn">관리자 모드</a>
 
-    <a href="#" class="return-to">AGMVP로 돌아가기</a>
+    <a href="<?=GOBACK_AGMVP?>" class="return-to">AGMVP로 돌아가기</a>
 
     <div class="hello-group">
       <p class="hello"><strong><?php echo $this->session->userdata['name'];?></strong> 선생님 안녕하세요.</p>

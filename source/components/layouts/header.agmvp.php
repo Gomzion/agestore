@@ -1,6 +1,6 @@
 <div id="header" class="agmvp">
   <div class="inner-top">
-    <a href="#" class="return-to">AGMVP로 돌아가기</a>
+    <a href="<?=GOBACK_AGMVP?>" class="return-to">AGMVP로 돌아가기</a>
   </div>
 
   <div class="inner-bottom">
