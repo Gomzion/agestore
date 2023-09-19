@@ -48,13 +48,13 @@ stages:
           secretName: 'AGeStore-auth'
           dockerRegistryEndpoint: 'AGeStore'
     
-    # AKS에 배포
-    - task: KubernetesManifest@1
-      inputs:
-        action: 'deploy'
-        connectionType: 'kubernetesServiceConnection'
-        kubernetesServiceConnection: 'AGeStore_Kuber'
-        namespace: 'default'
-        manifests: 
-          $(Build.SourcesDirectory)/manifests/deployment.yml
-          $(Build.SourcesDirectory)/manifests/service.yml
+      # AKS에 배포
+      - task: KubernetesManifest@1
+        inputs:
+          action: 'deploy'
+          connectionType: 'kubernetesServiceConnection'
+          kubernetesServiceConnection: 'AGeStore_Kuber'
+          namespace: 'default'
+          manifests: 
+            $(Build.SourcesDirectory)/manifests/deployment.yml
+            $(Build.SourcesDirectory)/manifests/service.yml
