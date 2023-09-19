@@ -45,7 +45,7 @@ stages:
           kubernetesServiceConnection: 'AGeStore_Kuber'
           namespace: 'default'
           secretType: 'dockerRegistry'
-          secretName: 'AGeStore-auth'
+          secretName: 'agestore-auth'
           dockerRegistryEndpoint: 'AGeStore'
     
       # AKS에 배포
