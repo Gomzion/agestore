@@ -27,7 +27,6 @@ RUN apt-get update -y && apt-get install -y php8.1 \
     php8.1-dev \
     build-essential
 
-
 #mssql
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
@@ -41,13 +40,18 @@ RUN echo "extension=pdo_sqlsrv.so" >> /etc/php/8.1/cli/php.ini
 RUN echo "extension=sqlsrv.so" >> /etc/php/8.1/fpm/php.ini
 RUN echo "extension=pdo_sqlsrv.so" >> /etc/php/8.1/fpm/php.ini
 
-
 #Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+#volume
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+COPY ./source/ /var/www/html/
+COPY ./images/ubuntu/conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./images/ubuntu/php/php.ini /etc/php/8.1/fpm/php.ini
+COPY ./images/ubuntu/so/okcert3_2.0.2_ext_linux64_glibc2.17__8.1.so /usr/lib/php/20210902/okcert3.so
+COPY ./images/ubuntu/cert/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt
 
 EXPOSE 80
 EXPOSE 443
