@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: internal-app
+ annotations:
+  service.beta.kubernetes.io/azure-load-balancer-ipv4: 20.200.210.28 # AAG의 Backendpool에 등록하는 IP가 됩니다.
+  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+ type: LoadBalancer
+ ports:
+ - port: 80
+ - port: 443
+ selector:
+  app: agestoreapp # Pod의 Label과 일치시켜야 합니다.

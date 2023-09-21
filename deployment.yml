@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agestore-deployment
+  labels:
+    app: agestore
+spec:
+  replicas: 3 # Pod 개수를 정의합니다.
+  selector:
+    matchLabels:
+      app: agestoreapp
+  template:
+    metadata:
+      labels:
+        app: agestoreapp # Kubernetes 서비스에서 해당 Label로 Pod를 식별합니다.
+    spec:
+      containers:
+      - name: agestore 
+        image: iqviaprdacr.azurecr.io/agestoreapp:latest # 빌드한 Docker Image의 주소를 입력합니다.
+        ports:
+        - containerPort: 80
+        - containerPort: 443
