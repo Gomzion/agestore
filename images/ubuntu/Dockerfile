@@ -48,6 +48,8 @@ COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY ../../source/ /var/www/html/
+RUN ls --recursive /var/www/html/
+
 COPY ./php/php.ini /etc/php/8.1/fpm/php.ini
 COPY ./so/okcert3_2.0.2_ext_linux64_glibc2.17__8.1.so /usr/lib/php/20210902/okcert3.so
 COPY ./cert/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt
