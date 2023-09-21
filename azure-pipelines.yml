@@ -57,4 +57,4 @@ stages:
           namespace: 'default'
           manifests: 
             $(Build.SourcesDirectory)/deployment.yml
-	    $(Build.SourcesDirectory)/service.yml
+            $(Build.SourcesDirectory)/service.yml
