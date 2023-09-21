@@ -55,6 +55,6 @@ stages:
           connectionType: 'kubernetesServiceConnection'
           kubernetesServiceConnection: 'AGeStore_Kuber'
           namespace: 'default'
-          manifests: 
-            ./manifests/deployment.yml
-            ./manifests/service.yml
+          manifests: |
+            $(Build.SourcesDirectory)/manifests/deployment.yml
+            $(Build.SourcesDirectory)/manifests/service.yml
