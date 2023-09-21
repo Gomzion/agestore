@@ -26,7 +26,7 @@ stages:
         containerRegistry: 'AGeStore'
         repository: 'AGeStoreApp'
         command: 'buildAndPush'
-        Dockerfile: '$(Build.SourcesDirectory)/images/ubuntu/Dockerfile'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
           latest
