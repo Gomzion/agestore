@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: agestore-deployment
+ name: agestoreapp
  annotations:
   service.beta.kubernetes.io/azure-load-balancer-ipv4: 20.200.210.28 # AAG의 Backendpool에 등록하는 IP가 됩니다.
   service.beta.kubernetes.io/azure-load-balancer-internal: "true"
