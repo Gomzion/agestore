@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: AGeStore
+  name: agestore
   annotations:
   # AAG의 Backendpool에 등록하는 IP가 됩니다. AKS 노드가 사용하는 Azure Subnet 대역으로 지정
   # 만약 아이피가 중복되어 있다면 다른 아이피로 변경해야 합니다.
