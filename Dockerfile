@@ -43,6 +43,10 @@ RUN echo "extension=pdo_sqlsrv.so" >> /etc/php/8.1/fpm/php.ini
 #Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN echo $(Build.SourcesDirectory)
+RUN echo ${Build.SourcesDirectory}
+RUN echo "PWD is: $PWD"
+
 #volume
 COPY $(Build.SourcesDirectory)/images/ubuntu/conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY $(Build.SourcesDirectory)/images/ubuntu/conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
