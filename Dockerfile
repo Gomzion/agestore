@@ -57,4 +57,8 @@ EXPOSE 443
 #EXPOSE 22
 #EXPOSE 9000
 
+RUN service nginx stop
+RUN service nginx start
+RUN service php8.1-fpm restart
+
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
